@@ -3,7 +3,7 @@ pipeline {
 	stages {
 		stage ("pull scm python test") {
 			steps {
-				git branch: 'python', url: 'https://github.com/wssrronak/python-pipeline.git'
+				git branch: 'python', url: 'https://github.com/vibhutigoyal/python-pipeline.git'
 				}
 			}
 		stage ("Build") {

@@ -1,17 +1,15 @@
-try:
-    def cp():
-        global b
-        with open(r"/home/ec2-user/f1.txt","w") as i:
-            i.write("hello this is my jenkins pipeline")
-        with open(r"/home/ec2-user/f1.txt","r") as i:
-            b=i.read()
-        with open(r"/home/ec2-user/file2.txt","x") as i:
-            i.write(b)
-           # print("file data has been copy successfully by create mode !!!")
-    
-    ## calling the cp function
-    cp()
-except FileExistsError as i:
-    with open(r"/home/ec2-user/file2.txt","a") as i:
-        i.write(b)
-        # print("File data has been copy successfully by append mode")
+def cp():
+    try:
+        with open("/home/ec2-user/f1.txt", "w") as f1:
+            f1.write("hello this is my jenkins pipeline")
+        with open("/home/ec2-user/f1.txt", "r") as f1:
+            data = f1.read()
+        with open("/home/ec2-user/file2.txt", "x") as f2:
+            f2.write(data)
+            print("File data has been copied successfully!")
+    except FileExistsError:
+        with open("/home/ec2-user/file2.txt", "a") as f2:
+            f2.write(data)
+            print("File data has been appended successfully!")
+    except PermissionError:
+        print("Permission denied. Unable to write to file.")

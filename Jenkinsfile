@@ -1,7 +1,5 @@
 pipeline {
-	agent {
-		label 'python-pipeline'
-		}
+	agent any
 	stages {
 		stage ("pull scm python test") {
 			steps {
